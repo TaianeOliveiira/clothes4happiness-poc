@@ -3,76 +3,180 @@
 <head>
 <meta charset="UTF-8">
 <title>Clothes4Happiness | Painel do Sistema</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --indigo-dark: #141F33;
+    --indigo: #1E2E4D;
+    --thread-gold: #C9971F;
+    --ivory: #F3EFE6;
+    --muted: #93A2BC;
+    --line: #33456B;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f5f7; color: #1f2937; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--indigo-dark);
+    color: var(--ivory);
+    line-height: 1.5;
+  }
 
-  header { background: #111827; color: #fff; padding: 18px 40px; display: flex; justify-content: space-between; align-items: center; }
-  header .logo { font-size: 20px; font-weight: 600; }
-  header .versao { background: #16a34a; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+  header {
+    padding: 36px 48px 28px;
+    border-bottom: 1px dashed var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  header h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 26px;
+    letter-spacing: 0.2px;
+  }
+  .tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--thread-gold);
+    border: 1px dashed var(--thread-gold);
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
 
-  .intro { padding: 30px 40px 10px; }
-  .intro h2 { font-size: 22px; margin-bottom: 6px; }
-  .intro p { color: #6b7280; font-size: 14px; }
+  .intro { padding: 32px 48px 8px; max-width: 640px; }
+  .intro p { color: var(--muted); font-size: 14px; }
 
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; padding: 20px 40px 40px; }
+  .label {
+    padding: 24px 48px 8px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--thread-gold);
+  }
 
-  .card { background: #fff; border-radius: 10px; padding: 22px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); border-left: 4px solid #16a34a; }
-  .card h3 { font-size: 15px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-  .card p { font-size: 13px; color: #6b7280; line-height: 1.5; }
-  .card .status { display: inline-block; margin-top: 12px; font-size: 12px; font-weight: 600; color: #16a34a; }
+  .sheet { padding: 0 48px 48px; }
 
-  footer { text-align: center; padding: 20px; font-size: 12px; color: #9ca3af; border-top: 1px solid #e5e7eb; margin-top: 20px; }
+  .row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .row:last-child { border-bottom: none; }
+
+  .swatch {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  .row-content { flex: 1; display: flex; justify-content: space-between; gap: 24px; }
+  .row-text h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .row-text p { font-size: 13px; color: var(--muted); max-width: 480px; }
+
+  .status {
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    padding-top: 2px;
+    text-align: right;
+  }
+
+  footer {
+    padding: 20px 48px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--muted);
+  }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">Clothes4Happiness — Painel do Sistema</div>
-  <div class="versao">v1.2</div>
+  <h1>Clothes4Happiness</h1>
+  <span class="tag">v1.2</span>
 </header>
 
 <div class="intro">
-  <h2>Status da Transformação Digital</h2>
-  <p>Ambiente monitorado via integração contínua (CI/CD) com Docker e GitHub Actions.</p>
+  <p>Painel interno de acompanhamento da transformação digital. Cada linha abaixo representa uma frente do projeto, atualizada automaticamente via pipeline de CI/CD.</p>
 </div>
 
-<div class="grid">
-  <div class="card">
-    <h3>☁️ Infraestrutura em Nuvem</h3>
-    <p>Sistema hospedado em ambiente containerizado, com deploy automatizado a cada atualização de código.</p>
-    <span class="status">● Online</span>
+<div class="label">Status por frente</div>
+
+<div class="sheet">
+
+  <div class="row">
+    <div class="swatch" style="background:#6E9BC7"></div>
+    <div class="row-content">
+      <div class="row-text">
+        <h3>Infraestrutura em nuvem</h3>
+        <p>Sistema hospedado em ambiente containerizado, com deploy automatizado a cada atualização de código.</p>
+      </div>
+      <div class="status" style="color:#6E9BC7">Online</div>
+    </div>
   </div>
 
-  <div class="card">
-    <h3>🐳 Ambiente Docker</h3>
-    <p>Aplicação empacotada em container, garantindo consistência entre desenvolvimento e produção.</p>
-    <span class="status">● Ativo</span>
+  <div class="row">
+    <div class="swatch" style="background:#4FA187"></div>
+    <div class="row-content">
+      <div class="row-text">
+        <h3>Ambiente Docker</h3>
+        <p>Aplicação empacotada em container, garantindo consistência entre desenvolvimento e produção.</p>
+      </div>
+      <div class="status" style="color:#4FA187">Ativo</div>
+    </div>
   </div>
 
-  <div class="card">
-    <h3>🔄 Pipeline CI/CD</h3>
-    <p>GitHub Actions constrói e publica automaticamente uma nova imagem a cada alteração no repositório.</p>
-    <span class="status">● Automatizado</span>
+  <div class="row">
+    <div class="swatch" style="background:#C9971F"></div>
+    <div class="row-content">
+      <div class="row-text">
+        <h3>Pipeline CI/CD</h3>
+        <p>GitHub Actions constrói e publica automaticamente uma nova imagem a cada alteração no repositório.</p>
+      </div>
+      <div class="status" style="color:#C9971F">Automatizado</div>
+    </div>
   </div>
 
-  <div class="card">
-    <h3>🔒 Segurança</h3>
-    <p>Credenciais de acesso protegidas via GitHub Secrets, sem exposição de senhas no código-fonte.</p>
-    <span class="status">● Configurado</span>
+  <div class="row">
+    <div class="swatch" style="background:#B5573C"></div>
+    <div class="row-content">
+      <div class="row-text">
+        <h3>Segurança</h3>
+        <p>Credenciais de acesso protegidas via GitHub Secrets, sem exposição de senhas no código-fonte.</p>
+      </div>
+      <div class="status" style="color:#B5573C">Configurado</div>
+    </div>
   </div>
 
-  <div class="card">
-    <h3>🗂️ Sistemas Integrados</h3>
-    <p>Módulos previstos: ERP para gestão de estoque e vendas, CRM para relacionamento com o cliente.</p>
-  <span class="status">● Em andamento</span>
+  <div class="row">
+    <div class="swatch" style="background:#93A2BC"></div>
+    <div class="row-content">
+      <div class="row-text">
+        <h3>Sistemas integrados</h3>
+        <p>ERP para gestão de estoque e vendas, CRM para relacionamento com o cliente.</p>
+      </div>
+      <div class="status" style="color:#93A2BC">Em andamento</div>
+    </div>
   </div>
 
-  <div class="card">
-    <h3>👥 Cultura DevOps</h3>
-    <p>Times de desenvolvimento e operações colaborando em um fluxo único e automatizado.</p>
-    <span class="status">● Em prática</span>
+  <div class="row">
+    <div class="swatch" style="background:#8B6BB5"></div>
+    <div class="row-content">
+      <div class="row-text">
+        <h3>Cultura DevOps</h3>
+        <p>Times de desenvolvimento e operações colaborando em um fluxo único e automatizado.</p>
+      </div>
+      <div class="status" style="color:#8B6BB5">Em prática</div>
+    </div>
   </div>
+
 </div>
 
 <footer>
